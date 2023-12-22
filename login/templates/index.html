@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+     <title>@Web</title>
+  </head>
+  <body>
+  
+
+<nav class="navbar btn-success shadow-lg">
+	<div class="container-fluid">
+		<a class="navbar-brand"> Receipe </a>
+		<form class="d-flex" role="search">
+			{% if request.user.is_authenticated %}
+		<a href="/logout/" class="btn btn-primary" type="submit">Logout</a>
+		{% else %}
+		<a href="/login/" class="btn btn-primary" type="submit">Login</a>
+		{% endif %}
+	</form></div>
+</nav>
+
+
+
+
+
+
+
+
+<div class="container mt-3">
+
+	<form  class="col-6 mx-auto card p-3 shadow-lg" method="post" enctype="multiple/form-data">
+		{% csrf_token %}
+		<h2 style="margin-left:150px; color:red;"> Add Receipe</h2>
+
+  	  <div class="md-3">
+    <label for="exampleInputEmail1">Receipe name</label>
+    <input name="name"  type="text" class="form-control" >
+    
+  </div>
+  <br>
+  <div class="md-3">
+    <label for="exampleInputPassword1">Receipe Discription</label>
+    <textarea type="text" class="form-control" name="disc" ></textarea>
+  </div>
+  <br>
+
+  <div class="md-3">
+    <label for="exampleInputPassword1">Receipe Image</label>
+    <input type="file" class="form-control" name="image" >
+  </div>
+  <br>
+  <button type="submit" class="btn btn-success">Submit</button>
+</form>
+<hr>
+
+
+<form  class="col-6 mx-auto card p-3 shadow-lg" >
+	<div class="5">
+		<div class="mx-auto col-6">
+			<div class="md-3">
+				 <label >Search Food</label>
+    <input name="search"   class="form-control" >
+
+
+
+</div>
+</div>
+<br>
+
+<button type="submit" class="btn btn-primary" style="margin-left:220px">Search</button>
+
+</div ></form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">S.No</th>
+      <th scope="col">Receipe name</th>
+      <th scope="col">Discription </th>
+      <th scope="col">Image</th>
+      <th scope="col">Delete</th>
+       <th scope="col">Update</th>
+    </tr>
+  </thead>
+  <br>
+  <hr>
+  <tbody>
+  	
+  {% for pop in receipe %}
+    <tr>
+      <th scope="row">{{forloop.counter}}</th>
+      <td>{{pop.receipe_name}}</td>
+      <td>{{pop.receipe_discription}}</td>
+      <td>
+
+      	<img src="/receipe/{{pop.receipe_image}}" style="height:100px"></td>
+      	 <td>
+      	 	<a href="/delete/{{pop.id}}" type="button" class="btn btn-danger">Delete</a>
+      	 </td>
+      	 <td>
+      	 	<a href="/update/{{pop.id}}" type="button" class="btn btn-primary">Update</a>
+      	 </td>
+    </tr>
+
+    {% endfor %}
+    
+  </tbody>
+</table>
+
+
+
+</div>
+</body>
+</html>
+
+

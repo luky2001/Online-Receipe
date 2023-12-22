@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+     <title>@Web</title>
+  </head>
+  <body>
+
+
+
+
+
+
+
+
+
+
+<div class="container mt-3">
+
+	<form  class="col-6 mx-auto card p-3 shadow-lg" method="post" enctype="multiple/form-data">
+		{% csrf_token %}
+		<h2 style="margin-left:150px; color:red;"> Update Receipe</h2>
+
+  	  <div class="md-3">
+    <label for="exampleInputEmail1">Receipe name</label>
+    <input name="name"  type="text" value="{{receipe.receipe_name}}" class="form-control" >
+    
+  </div>
+  <br>
+  <div class="md-3">
+    <label for="exampleInputPassword1">Receipe Discription</label>
+    <textarea type="text" class="form-control" name="disc"  {{receipe.receipe_dicription}} >{{receipe.receipe_discription}}</textarea>
+  </div>
+  <br>
+
+  <div class="md-3">
+    <label for="exampleInputPassword1">Receipe Image</label>
+    <input type="file" class="form-control" name="image" >
+  </div>
+  <br>
+  <button type="submit" class="btn btn-success">Update</button>
+</form>
+
+ 
+
+</div>
+</body>
+</html>
+
+
